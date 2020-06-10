@@ -1,0 +1,60 @@
+.navbar{
+    position: fixed;
+    height: 100px;
+    width: 100vw;
+    background-color: $navbar-color;
+    display:flex;
+    align-items: center;
+}
+
+.links{
+    display: flex;
+    height: 100%;
+}
+
+.link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100%;
+    font-size: $text20;
+
+    a{
+        color: $text-color;
+    }
+
+    &:hover{
+        background-color: $navbar-hover;
+    }
+}
+
+.filter{
+    width:200px;
+}
+
+.cart{
+    margin: 0 auto;
+    color: $text-color;
+    font-size:25px;
+    text-align: center;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    padding: 0 25px;
+}
+
+.profile-name{
+    color: $text-color;
+    padding: 0 25px;
+}
+
+.profile-image{
+    width:60px;
+    height: 60px;
+    border-radius:50%;
+    background-color: grey;
+}
