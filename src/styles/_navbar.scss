@@ -1,60 +1,72 @@
 .navbar{
-    position: fixed;
-    height: 100px;
-    width: 100vw;
-    background-color: $navbar-color;
+    position:fixed;
+    width:100%;
+    height:100px;
+    background-color:$navbar-color;
+}
+
+.content{
+    max-width: 1366px;
+    margin:0 auto;
     display:flex;
-    align-items: center;
+    height: 100%;
 }
 
 .links{
-    display: flex;
+    display:flex;
     height: 100%;
 }
 
 .link{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 200px;
     height: 100%;
-    font-size: $text20;
+    color: white;
 
     a{
-        color: $text-color;
-    }
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
 
-    &:hover{
-        background-color: $navbar-hover;
+        &:hover{
+            background-color: $navbar-hover;
+        }
     }
 }
 
-.filter{
-    width:200px;
+.user{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 15px;
 }
 
 .cart{
-    margin: 0 auto;
-    color: $text-color;
-    font-size:25px;
-    text-align: center;
+    width: 100px;
+    height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 .profile{
     display: flex;
     align-items: center;
-    justify-content:flex-end;
-    padding: 0 25px;
 }
 
 .profile-name{
-    color: $text-color;
+    color: white;
     padding: 0 25px;
+
 }
 
 .profile-image{
-    width:60px;
+    width: 60px;
     height: 60px;
     border-radius:50%;
-    background-color: grey;
+    background-color:grey;
+    margin: 0 10px;
 }
