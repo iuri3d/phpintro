@@ -1,6 +1,9 @@
 $( document ).ready(function() {
 
-    loadProducts();
+    
+    
+
+
     ////Slider
     $('.slider').slick({
         infinite: true,
@@ -13,6 +16,8 @@ $( document ).ready(function() {
     });
 
 });
+
+loadHome();
 
 function loadHome(){
     $('#home').append("<div class='container'></div>");
@@ -50,9 +55,27 @@ function loadProducts() {
         .append('<div class="container"></div>');
     $('.container')
         .append('<div class="searchBar"></div>')
-        .append('<div class="productGrid"></div>');
+        .append('<div class="productGrid" id="grid"></div>');
     $('.searchBar')
         .append('<input type="text" class="search" placeholder="Pesquisar"></input>')
+        .append('<label for="favorites">Favoritos</label>')
+        .append('<input type="checkbox" name="favorites" id="">')
+        .append('<label for="orderBy">Ordenar Por:</label>')
+        .append('<select id="orderBy">')
+        .append('<button type="button" class="filter"><i class="fas fa-filter"></i>Filtrar</button>');
+    $('#orderBy')
+        .append('<option value="Asc">Preço Ascendente</option>')
+        .append('<option value="Dsc">Preço Descendente</option>')
+
+    $('.productGrid')
+        .append(function(){
+            for (var i=0; i < 6; i++){
+                var number = Math.round(Math.random());
+                var name = "Producto" + [i];
+                var price = Math.round(Math.random() * 15);
+                generateProduct(number, name, price, "grid");
+            }
+        });
 }
 
 
