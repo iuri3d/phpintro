@@ -5,6 +5,7 @@ const gulp = require("gulp"),
   hashsrc = require("gulp-hash-src"),
   postcss = require("gulp-postcss"),
   sass = require("gulp-sass"),
+  uglify = require("gulp-uglify"),
   sourcemaps = require("gulp-sourcemaps");
 
 
@@ -47,6 +48,7 @@ function scripts() {
   return gulp
     .src(paths.scripts.src)
     .pipe(hashsrc({build_dir: paths.scripts.dest, src_path: paths.scripts.src}))
+    .pipe(uglify())
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(browserSync.stream());
 }
@@ -106,12 +108,13 @@ function connect(done) {
 
 function watcher() {
   gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.scripts.src, scripts);
   gulp.watch(paths.templates.src, templates);
 }
 
 
 
-const build = gulp.series(styles, templates);
+const build = gulp.series(styles, templates, scripts);
 const watch = gulp.parallel(watcher, connect);
 
 exports.images = images;
