@@ -1,20 +1,17 @@
 $( document ).ready(function() {
 
-    
-    
-
-
-    ////Slider
-    $('.slider').slick({
+    $('#slider').slick({
         infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 3
-        });
+        slidesToShow: 4, // Shows a three slides at a time
+        slidesToScroll: 1, // When you click an arrow, it scrolls 1 slide at a time
+        arrows: true, // Adds arrows to sides of slider
+        dots: true // Adds the dots on the bottom
+      });
 
-    $('.orders').on('click', function(){
-        console.log('clicked');
+    $('.icon').on('click',function(){showCart()});
+    $('#cart-close').on('click',function(){
+        showCart();
     });
-
 });
 
 loadHome();
@@ -41,8 +38,18 @@ function loadHome(){
     .append('<div class="banner"></div>');
 
     $('.rowThree')
-        .append('<div class="slider"></div>');
-
+        .append('<div class="slider" id="slider"></div>');
+    
+    $('.slider')
+    .append(function(){
+        for (var i=0; i < 5; i++){
+            var number = Math.round(Math.random());
+            var name = "Producto" + [i];
+            var price = Math.round(Math.random() * 15);
+            generateProduct(number, name, price, "slider");
+        }
+    });
+    
     $('.rowFour')
         .append('<div class="chart"></div>');
     
@@ -77,9 +84,6 @@ function loadProducts() {
             }
         });
 }
-
-
-
 
 function generateProduct(f, n, p, l){
     /*
@@ -119,4 +123,8 @@ function generateProduct(f, n, p, l){
     document.getElementById(l).appendChild(product);
 
 
+}
+
+function showCart(){
+    $('.cart-body').toggleClass('show');
 }
