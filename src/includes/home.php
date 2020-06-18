@@ -23,13 +23,16 @@
                             <button class="button wipe">Apagar</button>
                             <button class="button finish">Finalizar Encomenda</button>
                         </div>
-
                     </div>
                     <div class="cart-count">00</div>
                 </div>
                 <div class="profile">
                     <div class="profile-name">José Manuel</div>
                     <div class="profile-image"></div>
+                </div>
+                <div class="user-settings">
+                    <div class="profile-settings"><i class="fas fa-user"></i>Perfil</div>
+                    <div class="logout"><i class="fas fa-sign-out-alt"></i>Sair</div>
                 </div>
             </div>
         </div>        
