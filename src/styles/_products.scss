@@ -14,9 +14,35 @@
         height: 35px;
         width: 35%;
         border-radius: 5px;
+        padding: 0 15px;
 
         &::placeholder{
-            padding-left: 10px;
+            //padding-left: 10px;
+        }
+
+        &:focus{
+            outline: none;
+        }
+    }
+
+    .filter-favorites{
+        display:flex;
+        align-items: center;
+
+        input{
+            width: 15px;
+            height: 15px;
+            border:none;
+            border-radius:0;
+        }
+    }
+
+    .filter-orderBy{
+        display:flex;
+        align-items: center;
+
+        label{
+            padding-right: 10px;
         }
     }
 
@@ -33,12 +59,19 @@
     }
 }
 
+#orderBy{
+    border: none;
+    &:focus{
+        outline:none;
+    }
+}
+
 .productGrid{
     margin-top: 10px;
     width: 100%;
     height: calc(100vh - 130px - 90px - 30px);
     display: grid;
     grid-template-columns: repeat(8, (calc(100% / 8)));
-    grid-template-rows: 260px;
+    grid-auto-rows: 260px;
     justify-items: center;
 }

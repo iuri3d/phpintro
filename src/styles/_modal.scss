@@ -1,0 +1,80 @@
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-container{
+        width: 600px;
+        height: 400px;
+        background-color: $button-alt;
+        border-radius: 5px;
+
+        .modal-close{
+            height: 10%;
+            font-size: 1.25rem;
+            display:flex;
+            align-items: center;
+            float: right;
+            padding:0 15px;
+            cursor: pointer;
+        }
+
+        .modal-body{
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-wrap: wrap;
+
+            .col-left{
+                padding: 15px;
+                .modal-image{
+                    width:100%;
+                    height: 50%;
+                    background-color:red;
+                }
+                .modal-name{
+                    height: 25%;
+                    display:flex;
+                    align-items: center;
+                    justify-content:center;
+                }
+
+                .modal-price{
+                    height: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content:center;
+                }
+            }
+            .col-right{
+                padding: 10px 15px;
+                display: flex;
+                flex-direction: column;
+                //justify-content:space-evenly;
+
+                .modal-description{
+                    font-size: $text12;
+                    height: 70%;
+                    margin: 10px 0;
+                }
+                .button-description{
+                    width:100px;
+                    height: 30px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
+.modal-col{
+    width: 50%;
+    height: 100%;
+}

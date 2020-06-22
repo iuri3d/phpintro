@@ -16,6 +16,10 @@
     font-size:18px;
     border-radius: 5px 5px 0 0;
     color: $text-alt;
+
+    svg{
+        cursor: pointer;
+    }
 }
 
 .image{

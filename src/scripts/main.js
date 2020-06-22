@@ -1,3 +1,5 @@
+/// inclue
+
 $( document ).ready(function() {
 
     $('#slider').slick({
@@ -13,11 +15,18 @@ $( document ).ready(function() {
     $('#cart-close').on('click',function(){
         showCart();
     });
+    $('.product').on('click',function(){
+        productDescription();
+    });
     buildChart();
     $('#banner').attr('src', 'https://cdn.pixabay.com/photo/2015/11/02/18/34/banner-1018818_1280.jpg');
+
+    $('.favorite-icon').on('click', function (){
+        toggleFavorite();
+    });
 });
 
-loadOrders();
+loadProducts();
 
 function loadHome(){
     $('#home').append("<div class='container'></div>");
@@ -88,23 +97,33 @@ function loadProducts() {
         .append('<div class="productGrid" id="grid"></div>');
     $('.searchBar')
         .append('<input type="text" class="search" placeholder="Pesquisar"></input>')
-        .append('<label for="favorites">Favoritos</label>')
-        .append('<input type="checkbox" name="favorites" id="">')
-        .append('<label for="orderBy">Ordenar Por:</label>')
-        .append('<select id="orderBy">')
+        .append('<div class=filter-favorites></div>')
+        .append('<div class="filter-orderBy">')
         .append('<button type="button" class="filter"><i class="fas fa-filter"></i>Filtrar</button>');
+
+    $('.filter-favorites')
+        .append('<label for="favorites">Favoritos:</label>')
+        .append('<input type="checkbox" name="favorites" id="">');
+    $('.filter-orderBy')
+        .append('<label for="orderBy">Ordenar Por:</label>')
+        .append('<select id="orderBy">');
     $('#orderBy')
         .append('<option value="Asc">Preço Ascendente</option>')
-        .append('<option value="Dsc">Preço Descendente</option>')
+        .append('<option value="Dsc">Preço Descendente</option>');
 
     $('.productGrid')
         .append(function(){
-            for (var i=0; i < 6; i++){
-                var number = Math.round(Math.random());
-                var name = "Producto" + [i];
-                var price = Math.round(Math.random() * 15);
-                generateProduct(number, name, price, "grid");
-            }
+            var server = new Server(res);
+            var res = server.getProducts();
+            res.products.forEach(function (p){
+                generateProduct(p.number, p.name, p.price, "grid");
+            });
+            // for (var i=0; i < 6; i++){
+            //     var number = Math.round(Math.random());
+            //     var name = "Producto" + [i];
+            //     var price = Math.round(Math.random() * 15);
+            //     generateProduct(number, name, price, "grid");
+            //}
         });
 }
 function loadOrders(){
@@ -116,6 +135,8 @@ function loadOrders(){
 
     $('.left')
         .append('<div class="ordersList"></div>')
+    $('ordersList')
+        .append('<input type="text"')
 }
 function generateProduct(f, n, p, l){
     /*
@@ -130,9 +151,9 @@ function generateProduct(f, n, p, l){
     var favourite = document.createElement('div');
     favourite.setAttribute("class", "favourite");
     if(f != 0){
-        favourite.innerHTML = '<i class="far fa-star"></i>';
+        favourite.innerHTML = '<i class="favorite-icon far fa-star"></i>';
     }else{
-        favourite.innerHTML = '<i class="fas fa-star"></i>';
+        favourite.innerHTML = '<i class="favorite-icon fas fa-star"></i>';
     }
     var image = document.createElement('img');
     image.setAttribute("class", "image");
@@ -200,4 +221,36 @@ function buildChart(){
             }
         }
     });
+}
+function productDescription(){
+    $('body').addClass('overflowBody');
+    $('.container')
+        .append('<div class="modal"></div>');
+    $('.modal')
+        .append('<div class="modal-container"></div>');
+    $('.modal-container')
+        .append('<div class="modal-close">&times</div>')
+        .append('<div class="modal-body"></div>');
+    $('.modal-body')
+        .append('<div class="modal-col col-left"></div>')
+        .append('<div class="modal-col col-right"></div>');
+    $('.col-left')
+        .append('<div class="modal-image"></div>')
+        .append('<div class="modal-name">kjdshfs sdfjh sdjkfh asdjk</div>')
+        .append('<div class="modal-price">453</div>');
+    $('.col-right')
+        .append('<p class="m-0">Descrição:</p>')
+        .append('<div class="modal-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices purus ut enim efficitur, nec feugiat ipsum condimentum. Aliquam ullamcorper ex sapien, porta malesuada erat dignissim sit amet. Praesent vel augue at lectus varius lacinia at a lectus. Ut quis ante vitae dui ultricies molestie quis vitae nisi. In non cursus mi. Sed sem turpis, fermentum non lobortis et, fermentum et tellus. Quisque a arcu at erat fringilla euismod. Donec nec lectus tristique, lacinia magna at, dignissim elit.</div>')
+        .append('<button class="button button-description">Adicionar <i class="fas fa-shopping-cart"></i></button>');
+    
+    
+    
+}
+function toggleFavorite(){
+    ////Get product
+    if('product is favorite'){
+        'far fa-star'
+    }else{
+        'fas fa-star'
+    };
 }
